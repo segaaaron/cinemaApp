@@ -2,7 +2,7 @@
 
 [![Swift Version][swiftUI]]
 
-This is a SwiftUI app, this the link for [Movies API](https://www.omdbapi.com/).
+This is a SwiftUI app, this is the link we use to show the information and details of the movie [Movies API](https://www.omdbapi.com/).
 
 ## 📋 Features
 
