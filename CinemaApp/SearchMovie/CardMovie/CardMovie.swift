@@ -72,18 +72,28 @@ struct CardMovie: View {
     }
     .frame(height: 200)
     .padding([.leading, .trailing], 25)
-    .overlay (
-      Button {
-        isLike.toggle()
-      } label: {
-        Image(likeButton)
-          .resizable()
-          .clipped()
-      }
-        .frame(width: 25, height: 25)
-        .padding(.trailing, 35)
-        .padding(.top, 15)
-      , alignment: .topTrailing
-    )
+//    .overlay (
+//      Button {
+//        isLike.toggle()
+//        storageData()
+//      } label: {
+//        Image(likeButton)
+//          .resizable()
+//          .clipped()
+//      }
+//        .frame(width: 25, height: 25)
+//        .padding(.trailing, 35)
+//        .padding(.top, 15)
+//      , alignment: .topTrailing
+//    )
+  }
+  
+  private func storageData() {
+    var storage = StoreData()
+    if isLike {
+      storage.save(data: movie)
+    } else {
+      storage.deleteById(movieId: movie.imdbID ?? "")
+    }
   }
 }

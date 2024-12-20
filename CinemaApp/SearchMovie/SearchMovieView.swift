@@ -10,6 +10,7 @@ import SwiftUI
 
 struct SearchMovieView: View {
   @ObservedObject var viewModel = SearchMovieViewModel()
+  var viewModelFavorites = FavoritesViewModel()
   @State var text: String = ""
   
   var body: some View {

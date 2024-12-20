@@ -12,7 +12,7 @@ import Foundation
 struct CinemaAppApp: App {
     var body: some Scene {
         WindowGroup {
-          MainTabbarView()
+          SearchMovieView()
         }
     }
 }

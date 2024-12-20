@@ -57,3 +57,5 @@ extension NetworkError: LocalizedError {
         }
     }
 }
+
+var safeArray: [Search] = []
