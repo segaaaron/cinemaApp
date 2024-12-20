@@ -6,12 +6,13 @@
 //
 
 import SwiftUI
+import Foundation
 
 @main
 struct CinemaAppApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+          SearchMovieView()
         }
     }
 }
