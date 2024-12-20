@@ -33,6 +33,14 @@ enum SearchMessage: String {
   case noFoundMessage = "Sorry, we couldn't find what you were looking for."
 }
 
+enum InputSeachText: String {
+  case placeholder = "Search a movie"
+}
+
+enum NavigationTitleMessage: String {
+  case title = "Movies"
+}
+
 enum FocusedField {
   case search
 }

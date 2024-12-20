@@ -15,7 +15,7 @@ struct SearchMovieView: View {
   var body: some View {
     NavigationView {
       ScrollView {
-        SearchInput(text: $text, placeholder: "Search a movie") { value in
+        SearchInput(text: $text, placeholder: InputSeachText.placeholder.rawValue) { value in
           switch value {
           case let query where query.isEmpty:
             viewModel.clearData()
@@ -40,7 +40,7 @@ struct SearchMovieView: View {
         Emptystate(EmptpyStateType: .firsState)
           .isHidden(!text.isEmpty)
       }
-      .navigationTitle("Movies")
+      .navigationTitle(NavigationTitleMessage.title.rawValue)
     }
   }
 }
