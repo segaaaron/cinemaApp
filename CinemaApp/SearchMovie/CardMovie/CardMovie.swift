@@ -10,6 +10,8 @@ import Kingfisher
 
 struct CardMovie: View {
   private var movie: Search
+  private var likeMovie = false
+  @State var isLike = false
   
   init(movie: Search) {
     self.movie = movie
@@ -17,6 +19,10 @@ struct CardMovie: View {
   
   var poster: String {
     movie.poster ?? ""
+  }
+  
+  var likeButton: String {
+    isLike ? "fillHeart" : "emptyHeard"
   }
   
   var body: some View {
@@ -66,5 +72,18 @@ struct CardMovie: View {
     }
     .frame(height: 200)
     .padding([.leading, .trailing], 25)
+    .overlay (
+      Button {
+        isLike.toggle()
+      } label: {
+        Image(likeButton)
+          .resizable()
+          .clipped()
+      }
+        .frame(width: 25, height: 25)
+        .padding(.trailing, 35)
+        .padding(.top, 15)
+      , alignment: .topTrailing
+    )
   }
 }
