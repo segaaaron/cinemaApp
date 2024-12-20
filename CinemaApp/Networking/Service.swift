@@ -15,13 +15,26 @@ final class Service {
   
   private init() {}
   
-  func fetchData<T: Decodable>(query: String, page: Int = 0, type: T.Type) -> Future<T, Error> {
+  func fetchData<T: Decodable>(query: String = "", page: Int = 0, type: T.Type, endPoint: Endpoint = .search, movieId: String = "") -> Future<T, Error> {
     let request = Request()
-    let params: [String: Any] = [
-      "apikey": path.apikey,
-      "s": query,
-      "page": page
-    ]
+    var params: [String: Any] = [:]
+
+    switch endPoint {
+    case .search:
+      let searchParams: [String: Any]  = [
+        "apikey": path.apikey,
+        "s": query,
+        "page": page
+      ]
+      params = searchParams
+    case .details:
+      let detailParams: [String: Any]  = [
+        "apikey": path.apikey,
+        "i": movieId,
+        "plot": "full"
+      ]
+      params = detailParams
+    }
 
     request.url = path.baseUrl
     request.params = params

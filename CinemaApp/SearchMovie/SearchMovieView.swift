@@ -31,8 +31,12 @@ struct SearchMovieView: View {
           Emptystate(EmptpyStateType: .notFound)
         case "True":
           LazyVStack {
-            ForEach(viewModel.response.search ?? [], id: \.self) { item in
-              CardMovie(movie: item)
+            ForEach(viewModel.response.search ?? [], id: \.imdbID) { item in
+              NavigationLink {
+                DetailView(movieId: item.imdbID ?? "")
+              } label: {
+                CardMovie(movie: item)
+              }
             }
           }
         default:

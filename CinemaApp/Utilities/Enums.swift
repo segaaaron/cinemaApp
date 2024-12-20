@@ -7,7 +7,7 @@
 import Foundation
 
 enum Endpoint {
-  case search(query: String, page: Int)
+  case search
   case details
 }
 

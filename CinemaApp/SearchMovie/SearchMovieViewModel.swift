@@ -18,14 +18,13 @@ final class SearchMovieViewModel: ObservableObject {
       .sink { completion in
         switch completion {
         case .failure(let err):
-          print("Error is \(err.localizedDescription)")
+          debugPrint("Error is \(err.localizedDescription)")
         case .finished:
           debugPrint("Finished")
         }
       }
     receiveValue: { [weak self] response in
       self?.response = response
-      print(response.response ?? "")
     }
     .store(in: &cancellables)
   }
