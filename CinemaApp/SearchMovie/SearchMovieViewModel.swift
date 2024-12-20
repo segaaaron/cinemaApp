@@ -25,7 +25,12 @@ final class SearchMovieViewModel: ObservableObject {
       }
     receiveValue: { [weak self] response in
       self?.response = response
+      print(response.response ?? "")
     }
     .store(in: &cancellables)
+  }
+  
+  func clearData() {
+    response = MovieResponse()
   }
 }

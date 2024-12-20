@@ -26,6 +26,10 @@ struct SearchInput: View {
     text.isEmpty || !isTextFieldFocused
   }
   
+  var borderInput: Color {
+    text.isEmpty ? Color.clear : Color.customBlue.b1
+  }
+  
   var body: some View {
     HStack {
       Image(systemName: "magnifyingglass")
@@ -33,7 +37,6 @@ struct SearchInput: View {
         .scaledToFill()
         .aspectRatio(contentMode: .fit)
         .frame(width: 20, height: 20)
-      //        .foregroundColor(Color.cleaer)
         .padding(.horizontal)
         .onTapGesture {
           focusedField = .search
@@ -85,13 +88,13 @@ struct SearchInput: View {
     .frame(height: 42.0)
     .background(
       RoundedRectangle(cornerRadius: 10.0, style: .continuous)
-        .fill(Color.clear)
+        .fill(Color.grey.c1)
     )
     .overlay(
       RoundedRectangle(cornerRadius: 10.0, style: .continuous)
-        .stroke(Color.black, lineWidth: 1.0)
+        .stroke(borderInput, lineWidth: 1.0)
     )
-    .padding([.leading, .trailing], 35)
+    .padding([.leading, .trailing], 25)
     .padding([.top, .bottom], 15)
   }
 }

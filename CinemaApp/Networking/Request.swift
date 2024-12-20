@@ -24,11 +24,10 @@ final class ApiRequest: NSObject {
     guard var component = URLComponents(string: pathUrl) else { return nil }
     let paramString: [String: String] = requestModel.params.compactMapValues { $0 as? String }
     
-    if requestModel.method == .GET {
-      component.queryItems = paramString.map {(key, value) in
-        URLQueryItem(name: key, value: value)
-      }
+    component.queryItems = paramString.map {(key, value) in
+      URLQueryItem(name: key, value: value)
     }
+
     guard let currentUrl = component.url else { return nil }
     var request = URLRequest(url: currentUrl)
     

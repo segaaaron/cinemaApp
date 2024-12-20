@@ -22,6 +22,17 @@ enum NetworkError: Error {
     case unknown
 }
 
+enum SearchType {
+  case notFound
+  case firsState
+}
+
+enum SearchMessage: String {
+  case title = "Still no searches?"
+  case subtitle = "At least 3 characters are required for your search"
+  case noFoundMessage = "Sorry, we couldn't find what you were looking for."
+}
+
 enum FocusedField {
   case search
 }
