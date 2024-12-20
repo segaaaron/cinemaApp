@@ -24,7 +24,6 @@ extension Color {
     static let c1 = Color(hex: 0xECEEF1)
     static let c2 = Color(hex: 0x455875)
   }
-  
   enum customBlue {
     static let b1 = Color(hex: 0x4781FF)
     static let b2 = Color(hex: 0xDAE6FF)
@@ -32,5 +31,8 @@ extension Color {
   enum neutral {
     static let n1 = Color(hex: 0x070D1A)
     static let n2 = Color(hex: 0x13213F)
+  }
+  enum shadows {
+    static let image = Color(hex: 0x000000, alpha: 0.16)
   }
 }

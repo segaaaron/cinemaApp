@@ -14,7 +14,7 @@ struct SearchMovieView: View {
   
   var body: some View {
     NavigationView {
-      ScrollView {
+      ScrollView(showsIndicators: false) {
         SearchInput(text: $text, placeholder: InputSeachText.placeholder.rawValue) { value in
           switch value {
           case let query where query.isEmpty:
@@ -31,7 +31,7 @@ struct SearchMovieView: View {
         case "True":
           LazyVStack {
             ForEach(viewModel.response.search ?? [], id: \.imdbID) { item in
-              Text(item.title ?? "")
+              CardMovie(movie: item)
             }
           }
         default:

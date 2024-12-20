@@ -43,4 +43,5 @@ struct Search: Codable, Hashable {
 enum TypeEnum: String, Codable {
   case movie = "movie"
   case series = "series"
+  case episode = "episode"
 }
