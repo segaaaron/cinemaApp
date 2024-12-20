@@ -13,13 +13,11 @@ struct SearchInput: View {
   @State private var isTextFieldFocused = false
   private var placeholder: String
   private var focusChanged: (_ focus: Bool) -> Void
-  private var onChangeText: (_ value: String) -> Void
   
-  init(text: Binding<String>, placeholder: String = "", focusChanged: @escaping (_ focus: Bool) -> Void = { _ in }, onChangeText: @escaping (_ value: String) -> Void) {
+  init(text: Binding<String>, placeholder: String = "", focusChanged: @escaping (_ focus: Bool) -> Void = { _ in }) {
     self._text = text
     self.placeholder = placeholder
     self.focusChanged = focusChanged
-    self.onChangeText = onChangeText
   }
   
   var hideCloseButton: Bool {
@@ -53,9 +51,6 @@ struct SearchInput: View {
           isTextFieldFocused = false
           self.focusChanged(false)
         }
-      }
-      .onChange(of: text) { _ , newValue in
-        onChangeText(newValue)
       }
       .focused($focusedField, equals: .search)
       .font(Font.title3)

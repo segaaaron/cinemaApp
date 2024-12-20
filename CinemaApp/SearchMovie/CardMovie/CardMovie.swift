@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import SDWebImageSwiftUI
+import Kingfisher
 
 struct CardMovie: View {
   private var movie: Search
@@ -15,28 +15,56 @@ struct CardMovie: View {
     self.movie = movie
   }
   
+  var poster: String {
+    movie.poster ?? ""
+  }
+  
   var body: some View {
     ZStack {
-      HStack {
-        AsyncImage(url: URL(string: movie.poster ?? "")) { image in
-          image
-            .resizable()
-            .aspectRatio(contentMode: .fill)
-            .clipped()
-        } placeholder: {
-          Color.neutral.n2
+      Image("cardBackground")
+        .resizable()
+        .clipped()
+      HStack(spacing: 15){
+        KFImage(URL(string: poster))
+          .resizable()
+          .clipped()
+          .cornerRadius(15)
+          .frame(width: 100, height: 150)
+          .isHidden(poster.contains("N/A"))
+          .padding(.leading, 25)
+        Image("NotMovieFound")
+          .resizable()
+          .clipped()
+          .frame(width: 100, height: 150)
+          .padding(.leading, 25)
+          .cornerRadius(15)
+          .isHidden(!poster.contains("N/A"))
+        VStack(alignment: .leading){
+          Text(movie.title ?? "")
+            .font(.headline)
+            .fontWeight(.bold)
+            .multilineTextAlignment(.leading)
+            .foregroundStyle(Color.white)
+          Text(movie.year ?? "")
+            .fontWeight(.light)
+            .font(.footnote)
+            .foregroundStyle(Color.white)
+          HStack {
+            Text(movie.type?.rawValue ?? "")
+              .font(.callout)
+              .fontWeight(.bold)
+              .foregroundStyle(Color.white)
+          }
+          .frame(width: 70, height: 35)
+          .background(Color.customBlue.b3)
+          .cornerRadius(15)
+          .padding(.top, 10)
         }
-        .opacity(0.5)
-        .background(Color.black)
+        .padding(.trailing, 15)
+        Spacer()
       }
-      .frame(height: 200)
-      .frame(maxWidth: .infinity, alignment: .center)
-      .shadow(color: Color.shadows.image, radius: 8, x: 8, y: 3)
-      .clipShape(.rect(cornerRadius: 10) , style: .init())
-      .padding([.leading, .trailing], 20)
-      
-      Text(movie.title ?? "")
-        .foregroundStyle(Color.white)
     }
+    .frame(height: 200)
+    .padding([.leading, .trailing], 25)
   }
 }
