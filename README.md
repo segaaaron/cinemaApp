@@ -9,7 +9,8 @@ This is a SwiftUI app, this is the link we use to show the information and detai
 - [x] MVVM
 - [x] Image Caching
 - [x] Networking
-- [x] package SDWEBIMAGE
+- [x] package KINGFISHER
+- [x] View Detail
 
 ## ☝️ Requirements
 
@@ -24,6 +25,6 @@ A package was added to cache the images with SDWEBIMAGE.
 
 ## 🤝 Dependencies
 
-### [SDWEBIMAGE](https://github.com/SDWebImage/SDWebImage)
+### [KINGFISHER](https://github.com/onevcat/Kingfisher)
 
 Used for cache and downloading Image.
